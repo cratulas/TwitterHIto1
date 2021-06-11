@@ -3,12 +3,12 @@
 <div class="media my-4">
   <img src="<%= tweet.picture %> " class="mr-3" style="width: 5rem;" alt="perfil_picture">
   <div class="media-body">
-    <h5 class="mt-0"></h5>
     <p><%= tweet.content %> </p>
-    <a href="#" class="card-link">Like</a>
-    <a href="#" class="card-link">Retweet</a>
+    <i class="far fa-heart"></i> <i class="fas fa-heart"></i> <a href="#" class="card-link">Like</a>
+    <i class="fas fa-retweet"></i> <a href="#" class="card-link">Retweet</a>
   </div>
 </div>
 
   <% end %>
-
+<%# <%= link_to  "Mostrar mas", root_path %> %>
+<%= paginate @tweets %>

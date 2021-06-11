@@ -1,7 +1,10 @@
 class HomeController < ApplicationController
-    before_action :authenticate_user!
+    
+
     def index
-        @tweets = Tweet.all
-        
+        # @pagy, @tweets = pagy(Tweet.all , items: 3)
+        # @tweets = Tweet.page(params[:page]).per(3).order(:content)
+        @tweets = Tweet.order(:content).page(params[:page])
+        # @tweets = Tweet.page(params[:page]).per(3).order(:content)
     end
 end
