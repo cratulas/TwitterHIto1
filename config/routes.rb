@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'likes/create'
+  get 'likes' , to: 'likes#create'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

@@ -6,5 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tweets , dependent: :destroy
+  has_many :likes, class_name: "likes", dependent: :destroy
   
 end
