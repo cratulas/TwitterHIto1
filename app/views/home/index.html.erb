@@ -3,14 +3,16 @@
 <div class="media my-4">
   <img src="<%= tweet.picture %> " class="mr-3" style="width: 5rem;" alt="perfil_picture">
   <div class="media-body">
+    <%= link_to tweet.created_at.strftime("%C/%B/%A") ,  user_session_path, class: 'bg-white' %>
     <p><%= tweet.content %> </p>
 
     <% if user_signed_in? %>
     
         <% if tweet.likes.find_by(user_id: current_user.id).nil? %>
           <%= link_to " ",  likes_create_path(id_tweet: tweet.id ), class: "far fa-heart" , method: :post%>
-          <%= link_to " ",  user_session_path, class: "fas fa-retweet" %>
+
         <% else %>
+
           <i class="fas fa-heart"></i> 
           <i class="fas fa-retweet"></i> 
 
@@ -23,5 +25,5 @@
 </div>
 
   <% end %>
-<%= paginate @tweets %>
+<%= will_paginate @tweets %>
 

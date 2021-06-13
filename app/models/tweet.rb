@@ -8,4 +8,6 @@ class Tweet < ApplicationRecord
       b = User.find(a)
       c = b.profile_picture
     end
+
+
 end

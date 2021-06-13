@@ -1,9 +1,9 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[ index show edit update destroy ]
+  before_action :set_tweet, only: %i[show edit update destroy ]
 
   # GET /tweets or /tweets.json
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.where(user_id: current_user.id)
   end
 
   # GET /tweets/1 or /tweets/1.json
@@ -14,6 +14,20 @@ class TweetsController < ApplicationController
   def new
     @tweet = Tweet.new
   end
+
+
+  # def rt
+
+  #   @tweet = Tweet.find(params[:id_tweet])
+  #   @user = current_user
+  #   @new_tweet  = @user.tweets.build
+  #   @new_tweet.content = @tweet.content
+  #   @new_tweet.save
+  #   @tweet.retweets= @tweet.retweets + 1
+  #   @tweet.save
+  #   redirect_to root_path
+    
+  # end
 
   # GET /tweets/1/edit
   def edit
