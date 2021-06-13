@@ -5,14 +5,23 @@
   <div class="media-body">
     <p><%= tweet.content %> </p>
 
-    <i class="far fa-heart"></i> <i class="fas fa-heart"></i> <a href="#" class="card-link">Like</a>
-    <i class="fas fa-retweet"></i> <a href="#" class="card-link">Retweet</a>
-    <% if tweet.likes.find_by(user_id: current_user.id).nil? %>
-      <%= link_to "Profile",  likes_path(id_tweet: tweet.id , status: 0) %>
+    <% if user_signed_in? %>
+    
+        <% if tweet.likes.find_by(user_id: current_user.id).nil? %>
+          <%= link_to " ",  likes_create_path(id_tweet: tweet.id ), class: "far fa-heart" , method: :post%>
+          <%= link_to " ",  user_session_path, class: "fas fa-retweet" %>
+        <% else %>
+          <i class="fas fa-heart"></i> 
+          <i class="fas fa-retweet"></i> 
+
+        <% end %>
+    <% else %>
+        <%= link_to " ",  user_session_path, class: "far fa-heart" %>
+        <%= link_to " ",  user_session_path, class: "fas fa-retweet" %>
     <% end %>
   </div>
 </div>
 
   <% end %>
-<%# <%= link_to  "Mostrar mas", root_path %> %>
 <%= paginate @tweets %>
+

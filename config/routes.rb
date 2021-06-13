@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'likes' , to: 'likes#create'
+  post 'likes' , to: 'likes#create', as: "likes_create"
+  # post 'tweets' , to: 'tweets#create_retweet', as: "retweets_create"
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
