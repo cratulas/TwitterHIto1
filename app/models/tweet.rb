@@ -13,8 +13,4 @@ class Tweet < ApplicationRecord
       self.likes.count
     end
 
-    def retweet
-      self.retweets =+ 1
-    end
-
 end

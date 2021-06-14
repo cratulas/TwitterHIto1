@@ -9,7 +9,6 @@ class RetweetsController < ApplicationController
         @new_tweet.save
         @tweet.retweets=+1
         
-    
         redirect_to root_path
         
     end
