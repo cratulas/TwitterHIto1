@@ -9,5 +9,4 @@ class Tweet < ApplicationRecord
       c = b.profile_picture
     end
 
-
 end

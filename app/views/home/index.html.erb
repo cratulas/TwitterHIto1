@@ -10,6 +10,7 @@
     
         <% if tweet.likes.find_by(user_id: current_user.id).nil? %>
           <%= link_to " ",  likes_create_path(id_tweet: tweet.id ), class: "far fa-heart" , method: :post%>
+        
 
         <% else %>
 
@@ -25,5 +26,6 @@
 </div>
 
   <% end %>
+  
 <%= will_paginate @tweets %>
 
