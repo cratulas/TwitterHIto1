@@ -3,13 +3,8 @@
 <div class="media my-4">
   <img src="<%= tweet.picture %> " class="mr-3" style="width: 5rem;" alt="perfil_picture">
   <div class="media-body">
-  <% if tweet.created_at > 60.minutes.ago %>
-      <%= link_to 'created more than an hour ago ',  tweet, class: 'bg-white' %>
-  <% elsif %>
-      <%= link_to tweet.created_at.strftime("Creado el %d/%m/%Y a las %l:%M %p") ,  tweet, class: 'bg-white' %>
-  
-  <% end %>
-    
+
+    <%= link_to tweet.created_at.strftime("Creado el %d/%m/%Y a las %l:%M %p") ,  tweet, class: 'bg-white' %>
     <p><%= tweet.content %> </p>
 
     <% if user_signed_in? %>
