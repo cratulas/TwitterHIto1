@@ -3,19 +3,26 @@
 <div class="media my-4">
   <img src="<%= tweet.picture %> " class="mr-3" style="width: 5rem;" alt="perfil_picture">
   <div class="media-body">
-    <%= link_to tweet.created_at.strftime("%C/%B/%A") ,  user_session_path, class: 'bg-white' %>
+  <% if tweet.created_at > 60.minutes.ago %>
+      <%= link_to 'created more than an hour ago ',  tweet, class: 'bg-white' %>
+  <% elsif %>
+      <%= link_to tweet.created_at.strftime("Creado el %d/%m/%Y a las %l:%M %p") ,  tweet, class: 'bg-white' %>
+  
+  <% end %>
+    
     <p><%= tweet.content %> </p>
 
     <% if user_signed_in? %>
     
         <% if tweet.likes.find_by(user_id: current_user.id).nil? %>
-          <%= link_to " ",  likes_create_path(id_tweet: tweet.id ), class: "far fa-heart" , method: :post%>
-        
+          <%= link_to " ",  likes_create_path(id_tweet: tweet.id ), class: "far fa-heart" , method: :post%> <%= tweet.cantidad %>      
+          <%= link_to " ",  retweet_create_path(id_tweet: tweet.id ), class: "fas fa-retweet mx-1", method: :post %> <%= tweet.retweets %> 
+          
 
         <% else %>
 
-          <i class="fas fa-heart"></i> 
-          <i class="fas fa-retweet"></i> 
+          <i class="fas fa-heart"></i> <%= tweet.cantidad %>   
+          <%= link_to " ",  retweet_create_path(id_tweet: tweet.id ), class: "fas fa-retweet", method: :post %> <%= tweet.retweets %> 
 
         <% end %>
     <% else %>

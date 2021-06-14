@@ -9,4 +9,8 @@ class Tweet < ApplicationRecord
       c = b.profile_picture
     end
 
+    def cantidad
+      self.likes.count
+    end
+
 end
