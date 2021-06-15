@@ -10,10 +10,10 @@
     <% if user_signed_in? %>
     
         <% if tweet.likes.find_by(user_id: current_user.id).nil? %>
+        
           <%= link_to " ",  likes_create_path(id_tweet: tweet.id ), class: "far fa-heart" , method: :post%> <%= tweet.cantidad %>      
           <%= link_to " ",  retweet_create_path(id_tweet: tweet.id ), class: "fas fa-retweet mx-1", method: :post %> <%= tweet.retweets %> 
           
-
         <% else %>
 
           <i class="fas fa-heart"></i> <%= tweet.cantidad %>   
@@ -28,6 +28,6 @@
 </div>
 
   <% end %>
-  
-<%= will_paginate @tweets %>
 
+
+<%= paginate @tweets  %>

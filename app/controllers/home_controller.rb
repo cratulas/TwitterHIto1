@@ -5,14 +5,9 @@ class HomeController < ApplicationController
         # @pagy, @tweets = pagy(Tweet.all , items: 3)
         # @tweets = Tweet.page(params[:page]).per(3).order(:content)
         # @tweets = Tweet.order(:id).page(params[:page])
-        @tweets = Tweet.paginate(page: params[:page], per_page: 50)
+        # @tweets = Tweet.page(1).per(50).padding(3)
 
-        # @tweets = Tweet.page(params[:page]).per(3).order(:content)
+        @tweets = Tweet.page(params[:page]).per(10).order(:created_at)
     end
-
-    # def new
-    #     redirect_to new_user_registration_path
-    # end
-
     
 end
