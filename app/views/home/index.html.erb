@@ -1,4 +1,14 @@
-<% @tweets.each do |tweet| %>
+
+<% if user_signed_in? %>
+
+  <h2>New Tweet</h2>
+
+  <%= render 'shared/form', tweet: @tweet %>
+
+<% end %>
+
+
+<% @tweets.each do |tweet| %>   
 
 <div class="media my-4">
   <img src="<%= tweet.picture %> " class="mr-3" style="width: 5rem;" alt="perfil_picture">
