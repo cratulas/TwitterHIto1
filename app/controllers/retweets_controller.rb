@@ -6,7 +6,9 @@ class RetweetsController < ApplicationController
     
         @new_tweet  = @user.tweets.build
         @new_tweet.content = @tweet.content
+        @new_tweet.retweet_id = @tweet.id
         @new_tweet.save
+
 
         @tweet.retweets+=1
         @tweet.save
