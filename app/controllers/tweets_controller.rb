@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.where(user_id: current_user.id)
@@ -9,6 +9,7 @@ class TweetsController < ApplicationController
   # GET /tweets/1 or /tweets/1.json
   def show
     @likes = Like.where(tweet_id: @tweet.id)
+    
   end
 
   # GET /tweets/new

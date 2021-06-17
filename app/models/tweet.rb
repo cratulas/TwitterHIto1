@@ -2,9 +2,10 @@ class Tweet < ApplicationRecord
     belongs_to :user
     has_many :likes , dependent: :destroy
     validates :content, presence: true
-    
     paginates_per 10
-      
+    
+    scope :tweets_for_me, -> (friends){ where('id IN (?)', friends) }
+
     def picture
       a = self.user_id
       b = User.find(a)
