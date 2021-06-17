@@ -23,7 +23,7 @@ class HomeController < ApplicationController
             array.push(friend.friend_id)
         end
 
-        @tweets = Tweet.tweets_for_me(array)
+        @tweets = Tweet.tweets_for_me(array).page(params[:page]).per(10).order(:created_at)
 
 
 
