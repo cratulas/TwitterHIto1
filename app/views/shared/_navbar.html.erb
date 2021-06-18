@@ -5,6 +5,7 @@
   </button>
   <div class="collapse navbar-collapse " id="navbarNav">
     <ul class="navbar-nav ml-auto">
+
         <% if user_signed_in? %>
          <li class="nav-item active mx-1"><%= link_to "New Tweet" , new_tweet_path %></li>
          <li class="nav-item active mx-1"><%= link_to "My Tweets" , tweets_path %></li>
@@ -16,6 +17,7 @@
         <li class="nav-item active mx-1"><td><%= link_to "Register" , new_user_registration_path %></td>         </li>
         <% end %>
     </ul>
+
   </div>
 </nav>
 

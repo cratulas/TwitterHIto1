@@ -17,8 +17,12 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'devise'
 gem 'kaminari'
+<<<<<<< HEAD
 gem 'rails_admin', '~> 2.0'
 gem 'sassc', '~> 2.1.0'
+=======
+gem 'activeadmin'
+>>>>>>> master
 # gem 'pagy', '~> 3.8', '>= 3.8.3'
 # gem 'will_paginate', '~> 3.1.0'
 
