@@ -21,3 +21,62 @@
   </div>
 </nav>
 
+
+
+      <h2 class = "mb-4">Search your Tweet</h2>
+
+    <%= form_tag home_index_path, class: "mb-5" ,method: :get do %>
+        <%= text_field_tag :q,nil, class: 'btn btn-outline-success my-2 my-sm-0' ,placeholder: "Search your tweet"%>
+        <%= submit_tag "Search", class: 'btn btn-outline-success my-4 my-sm-0' %>
+    <% end %>
+
+            # @tweets = Tweet.page(params[:page]).per(3).order(:content)
+        # @tweets = Tweet.order(:id).page(params[:page])
+        # @tweets = Tweet.page(1).per(50).padding(3)
+        # @tweets = Tweet.page(params[:page]).per(10).order(:created_at)
+        @tweet = Tweet.new
+
+        # @friends = Friend.tweets_for_me(current_user.id).page(params[:page]).per(10).order(:created_at)
+        # @tweets = @friends.where(friend_id: )
+
+        # Message.where(user_id: Profile.select("user_id").where(gender: 'm'))
+
+        # Tweet.where(user_id: Friend.select("user_id").where(friend_id: ))
+        
+        array = []
+        @friends = Friend.tweets_for_me(current_user.id)
+
+        @friends.each do |friend|
+            array.push(friend.friend_id)
+        end
+
+        # @tweets = Tweet.tweets_for_me(array).page(params[:page]).per(10).order(:created_at)
+
+
+
+        if params[:q]
+            if params[:q] == 'Propuesta'
+              params[:q] = 0
+            elsif params[:q] == 'Progreso'
+              params[:q] = 1
+            elsif params[:q] == 'Terminado'
+              params[:q] = 2
+            end
+            @projects = Project.where('status = ?', params[:q])
+            
+            if @projects.nil?
+              @projects = Project.all
+            end
+          else
+            @projects = Project.all
+          end
+        
+        if params[:q]
+            @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%")
+            if @groups.nil?
+              @tweets = Tweet.tweets_for_me(array).page(params[:page]).per(10).order(:created_at)
+            end
+          else
+            @tweets = Tweet.tweets_for_me(array).page(params[:page]).per(10).order(:created_at)
+          end
+    
