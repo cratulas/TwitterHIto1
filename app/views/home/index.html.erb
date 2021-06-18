@@ -1,48 +1,58 @@
-
-<% if user_signed_in? %>
-
-  <h2>New Tweet</h2>
-
-  <%= render 'shared/form', tweet: @tweet %>
-
-<% end %>
-
-
-<% @tweets.each do |tweet| %>   
-
-<div class="media my-4">
-  <img src="<%= tweet.picture %> " class="mr-3" style="width: 5rem;" alt="perfil_picture">
-  <div class="media-body">
-
-    <%= link_to tweet.created_at.strftime("Creado el %d/%m/%Y a las %l:%M %p") ,  tweet, class: 'bg-white' %>
-    <p><%= tweet.content %> </p>
+<div class = "container">
+  
 
     <% if user_signed_in? %>
-    
-        <% if tweet.likes.find_by(user_id: current_user.id).nil? %>
-        
-          <%= link_to " ",  likes_create_path(id_tweet: tweet.id ), class: "far fa-heart" , method: :post%> <%= tweet.cantidad %>      
-          <%= link_to " ",  retweet_create_path(id_tweet: tweet.id ), class: "fas fa-retweet mx-1", method: :post %> <%= tweet.retweets %> 
-          <% if tweet.retweet_id != 0 %>
-            <%= link_to 'Retwiteado de',  tweet_path(tweet.retweet_id), class: 'bg-white' %>
-          <% end %>
-          
-        <% else %>
 
-          <i class="fas fa-heart"></i> <%= tweet.cantidad %>   
-          <%= link_to " ",  retweet_create_path(id_tweet: tweet.id ), class: "fas fa-retweet", method: :post %> <%= tweet.retweets %> 
-          <% if tweet.retweet_id != 0 %>
-            <%= link_to 'Retwiteado de',  tweet_path(tweet.retweet_id), class: 'bg-white' %>
-          <% end %>
+      <h2 class = "mb-4">New Tweet</h2>
 
-        <% end %>
-    <% else %>
-        <%= link_to " ",  user_session_path, class: "far fa-heart" %>
-        <%= link_to " ",  user_session_path, class: "fas fa-retweet" %>
+      <%= render 'shared/form', tweet: @tweet,class: "mb-5" %>
+
     <% end %>
-  </div>
+
+    <% @tweets.each do |tweet| %>   
+
+    <div class="media my-5">
+      <img src="<%= tweet.picture %> " class="mr-3" style="width: 5rem;" alt="perfil_picture">
+      <div class="media-body">
+
+        <%= link_to tweet.created_at.strftime("Creado el %d/%m/%Y a las %l:%M %p") ,  tweet, class: 'bg-white' %>
+        <p><%= tweet.content %> </p>
+
+        <% if user_signed_in? %>
+        
+            <% if tweet.likes.find_by(user_id: current_user.id).nil? %>
+            
+              <%= link_to " ",  likes_create_path(id_tweet: tweet.id ), class: "far fa-heart" , method: :post%> <%= tweet.cantidad %>      
+              <%= link_to " ",  retweet_create_path(id_tweet: tweet.id ), class: "fas fa-retweet mx-1", method: :post %> <%= tweet.retweets %> 
+              <% if tweet.retweet_id != 0 %>
+                <%= link_to 'Retwiteado de',  tweet_path(tweet.retweet_id), class: 'bg-white' %>
+              <% end %>
+              
+            <% else %>
+
+              <i class="fas fa-heart"></i> <%= tweet.cantidad %>   
+              <%= link_to " ",  retweet_create_path(id_tweet: tweet.id ), class: "fas fa-retweet", method: :post %> <%= tweet.retweets %> 
+              <% if tweet.retweet_id != 0 %>
+                <%= link_to 'Retwiteado de',  tweet_path(tweet.retweet_id), class: 'bg-white' %>
+              <% end %>
+
+            <% end %>
+        <% else %>
+            <%= link_to " ",  user_session_path, class: "far fa-heart" %>
+            <%= link_to " ",  user_session_path, class: "fas fa-retweet" %>
+        <% end %>
+      </div>
+    </div>
+
+      <% end %>
+
+      
+
+    <%= paginate @tweets %>        
+
 </div>
 
-  <% end %>
 
-<%= paginate @tweets %>
+
+
+

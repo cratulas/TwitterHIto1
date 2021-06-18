@@ -4,7 +4,7 @@ class Tweet < ApplicationRecord
     validates :content, presence: true
     paginates_per 10
     
-    scope :tweets_for_me, -> (friends){ where('id IN (?)', friends) }
+    scope :tweets_for_me, -> (friends){ where('user_id IN (?)', friends) }
 
     def picture
       a = self.user_id
