@@ -8,5 +8,12 @@ class User < ApplicationRecord
   has_many :tweets , dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friends, dependent: :destroy
-    
+  
+  
+
+  rails_admin do
+    configure :tweets do
+      # configuration here
+    end
+  end
 end

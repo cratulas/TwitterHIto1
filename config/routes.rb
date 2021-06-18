@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   post 'likes' , to: 'likes#create', as: "likes_create"
   post 'retweets' , to: 'retweets#create_retweet', as: "retweet_create"
 
