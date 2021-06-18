@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'devise'
 gem 'kaminari'
+gem 'activeadmin'
 # gem 'pagy', '~> 3.8', '>= 3.8.3'
 # gem 'will_paginate', '~> 3.1.0'
 
