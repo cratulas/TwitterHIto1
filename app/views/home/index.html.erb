@@ -1,6 +1,10 @@
 <div class = "container">
   
-
+        <%= form_tag home_index_path, class: 'mb-5', method: :get do %>
+            <%= text_field_tag :q, nil, placeholder: 'Find for your tweet ', class: ' my-2 my-sm-0'%>
+            <%= submit_tag "Search", class: ' my-2 my-sm-0' %>
+        <% end %>
+    
     <% if user_signed_in? %>
 
       <h2 class = "mb-4">New Tweet</h2>
@@ -49,6 +53,31 @@
       
 
     <%= paginate @tweets %>        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 </div>
 

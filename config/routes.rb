@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  get 'home/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   post 'likes' , to: 'likes#create', as: "likes_create"
@@ -12,6 +14,5 @@ Rails.application.routes.draw do
   resources :home
   resources :tweets
 
-  root 'home#index'
 
 end

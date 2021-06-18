@@ -1,7 +1,7 @@
 class Tweet < ApplicationRecord
     belongs_to :user
     has_many :likes , dependent: :destroy
-    validates :content, presence: true
+    validates :content, presence: true, uniqueness: {case_sensitive: false}
     paginates_per 10
     
     scope :tweets_for_me, -> (friends){ where('user_id IN (?)', friends) }
