@@ -19,9 +19,18 @@
       <img src="<%= tweet.picture %> " class="mr-3" style="width: 5rem;" alt="perfil_picture">
       <div class="media-body">
 
-        <%= link_to tweet.created_at.strftime("Creado el %d/%m/%Y a las %l:%M %p") ,  tweet, class: 'bg-white' %>
-        <p><%= tweet.content %> </p>
+        <%= link_to tweet.created_at.strftime("Created the %d/%m/%Y at %l:%M %p") ,  tweet, class: 'bg-white' %>
 
+
+        <p class = "mt-2">   <% tweet.content.split(' ').each do |word| %>
+            <% if word.start_with?('#') %>
+              <%= link_to word, home_index_path(q: word) %>
+            <%else %>
+              <%= word %>
+            <%end %>
+          <% end %>  </p>
+
+        
         <% if user_signed_in? %>
         
             <% if tweet.likes.find_by(user_id: current_user.id).nil? %>
@@ -52,33 +61,8 @@
 
       
 
-    <%= paginate @tweets %>        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <%= paginate @tweets %>     
     
-
 </div>
 
 

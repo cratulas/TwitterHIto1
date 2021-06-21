@@ -14,7 +14,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets/new
   def new
-    @tweet = Tweet.new
+    @users = User.all
   end
 
 
