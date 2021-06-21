@@ -37,10 +37,12 @@
 
     <tbody>
         <% @users_not.each do |user| %>
+            <% if  current_user.id  != user.id %>
             <tr>
                 <td><%= user.nick_name %></td>
                 <td><img src="<%= user.profile_picture %> " class="mr-3" style="width: 5rem;" alt="perfil_picture"></td>
             <tr>
+            <% end %>  
         <% end %>      
     </tbody>
 </table>
