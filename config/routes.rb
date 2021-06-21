@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   post 'likes' , to: 'likes#create', as: "likes_create"
   post 'retweets' , to: 'retweets#create_retweet', as: "retweet_create"
-
+  post 'friends' , to: 'friends#new', as: "friends_new"
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

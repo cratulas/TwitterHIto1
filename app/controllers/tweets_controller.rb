@@ -24,6 +24,11 @@ class TweetsController < ApplicationController
     @users = User.users_for_me(array)
 
     @users_not = User.users_for_nothing(array)
+    if @users_not.empty?
+      @users_not = User.all
+    end
+
+
   end
 
 
