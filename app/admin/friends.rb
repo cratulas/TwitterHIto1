@@ -6,6 +6,14 @@ ActiveAdmin.register Friend do
   # Uncomment all parameters which should be permitted for assignment
   #
   permit_params :friend_id, :user_id
+
+  form do |f|
+    f.inputs "Friend" do
+      f.input :user_id
+      f.input :friend_id
+    end
+    f.actions
+  end
   #
   # or
   #

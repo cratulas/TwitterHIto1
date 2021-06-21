@@ -24,3 +24,10 @@ Things you may want to cover:
 * ...
 
 * Link a heroku https://ancient-harbor-86320.herokuapp.com/
+
+* Active_admin = {
+    Usuario = admin@example.com
+    Password = password
+}
+
+*
