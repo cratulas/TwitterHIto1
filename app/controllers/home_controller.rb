@@ -13,12 +13,12 @@ class HomeController < ApplicationController
 
         
         if params[:q]
-            @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").page(params[:page]).per(10).order(:created_at)
+            @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").page(params[:page]).per(50).order(:created_at)
             if @tweets.nil?
-                @tweets = Tweet.tweets_for_me(array).page(params[:page]).per(10).order(:created_at)
+                @tweets = Tweet.tweets_for_me(array).page(params[:page]).per(50).order(:created_at)
             end
         else
-            @tweets = Tweet.tweets_for_me(array).page(params[:page]).per(10).order(:created_at)
+            @tweets = Tweet.tweets_for_me(array).page(params[:page]).per(50).order(:created_at)
         end
 
 

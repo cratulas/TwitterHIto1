@@ -3,22 +3,31 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!
   # GET /tweets or /tweets.json
   def index
-    @tweets = Tweet.where(user_id: current_user.id)
+    @tweets = Tweet.where(user_id: current_user.id).page(params[:page]).per(50).order(:created_at) #mist tweets
   end
 
   # GET /tweets/1 or /tweets/1.json
   def show
-    @likes = Like.where(tweet_id: @tweet.id)
+    @likes = Like.where(tweet_id: @tweet.id) # El tweet y sus me gusta
     
   end
 
   # GET /tweets/new
   def new
-    @users = User.all
+    array = []
+    @friends = Friend.friends_for_me(current_user.id)
+    
+    @friends.each do |friend|
+      array.push(friend.friend_id)
+    end
+
+    @users = User.users_for_me(array)
+
+    @users_not = User.users_for_nothing(array)
   end
 
 
-  # GET /tweets/1/edit
+  # GET /tweets/1/edit  
   def edit
   end
 

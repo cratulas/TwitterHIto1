@@ -9,8 +9,17 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friends, dependent: :destroy
   
+
+  scope :users_for_me, -> (friends){ where('id IN (?)', friends) }
+  scope :users_for_nothing, -> (friends){ where.not('id IN (?)', friends) }
+
+
+
+
   def to_s
     email
   end
+
+  
   
 end

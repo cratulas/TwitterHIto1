@@ -16,4 +16,8 @@ class Tweet < ApplicationRecord
       self.likes.count
     end
 
+    def to_s
+      id
+    end
+
 end

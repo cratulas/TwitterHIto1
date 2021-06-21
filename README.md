@@ -30,4 +30,7 @@ Things you may want to cover:
     Password = password
 }
 
-*
+* Usuario_prueba = {
+    Usuario = mauro@gmail.com
+    Pasword = 123456
+}
